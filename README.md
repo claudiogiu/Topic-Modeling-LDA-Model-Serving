@@ -14,13 +14,13 @@ To set up the repository properly, follow these steps:
 
 **1.** **Configure the Environment File**  
 
-- Initialize the environment configuration by copying the `.env.example` file:
+- Initialize the environment configuration by copying the `.env.example` file template into the project root as `.env`:
 
   ```bash
   mv .env.example .env  
   ```
 
-- Assign valid values to all required variables inside `.env`.
+- Assign valid values to all required variables.
 
 **2.** **Execute the Pipeline with Makefile**  
 
@@ -36,11 +36,11 @@ To set up the repository properly, follow these steps:
 
   - Creates a Python virtual environment and installs all required dependencies.
   - Inizializes the `data/raw` and `data/processed` directories for source data ingestion and preprocessed data storage.
-  - Retrieves the **Topic Modeling for Research Articles** dataset, available at [this link](https://www.kaggle.com/datasets/blessondensil294/topic-modeling-for-research-articles), and stores it in the `data/raw` folder.
+  - Retrieves the **Topic Modeling for Research Articles** dataset, available at [this link](https://www.kaggle.com/datasets/blessondensil294/topic-modeling-for-research-articles).
   - Preprocesses textual data, trains the LDA model, and computes evaluation metrics to assess its performance.
-  - Builds the container image defined in the `Dockerfile` and launches the corresponding containerized model serving service.
+  - Builds the container image defined in the `Dockerfile` and launches the corresponding model serving service.
 
-**3.** **Access the API** 
+**3.** **Interact with the API** 
   
   Once the container is running, the API is accessible at:
 
