@@ -2,8 +2,7 @@
 
 ## Introduction  
 
-This repository is designed for serving a topic modeling solution via a REST API built with FastAPI, leveraging Latent Dirichlet Allocation (LDA), originally introduced by BLEI D.M., NG A.Y., and JORDAN M.I. (2003) in their paper *"Latent Dirichlet Allocation"* (Journal of Machine Learning Research, Vol. 3, pp. 993–1022, DOI: [10.5555/944919.944937](https://dl.acm.org/doi/10.5555/944919.944937))
-.
+This repository is designed for deploying a topic model via a REST API built with FastAPI. The implemented algorithm corresponds to Latent Dirichlet Allocation (LDA), originally introduced by BLEI D.M., NG A.Y., and JORDAN M.I. (2003) in their paper *"Latent Dirichlet Allocation"* (Journal of Machine Learning Research, Vol. 3, pp. 993–1022, DOI: [10.5555/944919.944937](https://dl.acm.org/doi/10.5555/944919.944937)).
 
 LDA is a generative probabilistic model that identifies latent topics within a corpus by modeling documents as mixtures of thematic structures, each defined by a distribution over words. It enables unsupervised analysis of textual data through iterative estimation of hidden semantic patterns.
 
@@ -11,35 +10,43 @@ To ensure seamless deployment and reproducibility, the application is containeri
 
 ## Getting Started
 
-To properly set up the repository, run the following commands from the project root:
+To set up the repository properly, follow these steps:
 
-```bash
-mv .env.example .env  
-# Assign valid values to all required variables in .env  
-make all
-```
+**1.** **Configure the Environment File**  
 
-This single step performs the entire pipeline setup and execution:
+- Initialize the environment configuration by copying the `.env.example` file:
 
-- Downloads the dataset **Topic Modeling for Research Articles**, available at [this link](https://www.kaggle.com/datasets/blessondensil294/topic-modeling-for-research-articles).
+  ```bash
+  mv .env.example .env  
+  ```
 
-- Creates the `data/` folder in the project root with the following subdirectories:
-  - `raw/`: This will store the unprocessed dataset  
-  - `processed/`: stores the training and test splits
+- Assign valid values to all required variables inside `.env`.
 
-- Executes all pipeline modules in `src/`:
-  - `"load_data.py"`: Ingests and validates the dataset.  
-  - `"preprocess.py"`: Applies text preprocessing and stores vectorizers in `models/`  
-  - `"train_model.py"`: Trains the LDA model and serializes it to `models/`  
-  - `"evaluate_model.py"`: Computes validation metrics
+**2.** **Execute the Pipeline with Makefile**  
 
-- Prepares the trained model for serving via a REST API implemented in `main.py` using FastAPI.
+- The repository includes a **Makefile** to automate execution of all essential steps required for baseline functionality.
 
+- Run the following command to execute the full workflow:
+
+  ```bash
+  make all
+  ```
+
+- This command sequentially performs the following operations:
+
+  - Creates a Python virtual environment and installs all required dependencies.
+  - Inizializes the `data/raw` and `data/processed` directories for source data ingestion and preprocessed data storage.
+  - Retrieves the **Topic Modeling for Research Articles** dataset, available at [this link](https://www.kaggle.com/datasets/blessondensil294/topic-modeling-for-research-articles), and stores it in the `data/raw` folder.
+  - Preprocesses textual data, trains the LDA model, and computes evaluation metrics to assess its performance.
+  - Builds the container image defined in the `Dockerfile` and launches the corresponding containerized model serving service.
+
+**3.** **Access the API** 
+  
   Once the container is running, the API is accessible at:
 
-  - **Swagger UI for interactive documentation:** `localhost:8000/docs`  
+  - **Swagger UI for interactive docs:** `localhost:8000/docs`  
   - **Health check endpoint:** `/health`  
-  - **Prediction requests** `/predict`
+  - **Prediction requests:** `/predict`
 
 ## License  
 
