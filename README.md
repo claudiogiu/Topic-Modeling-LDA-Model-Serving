@@ -40,13 +40,13 @@ To set up the repository properly, follow these steps:
   - Preprocesses textual data, trains the LDA model, and computes evaluation metrics to assess its performance.
   - Builds the container image defined in the `Dockerfile` and launches the corresponding model serving service.
 
-**3.** **Interact with the API** 
+**3.** **Access the API** 
   
-  Once the container is running, the API is accessible at:
+  - Once the container is running, the API is accessible at:
 
-  - **Swagger UI for interactive docs:** `localhost:8000/docs`  
-  - **Health check endpoint:** `/health`  
-  - **Prediction requests:** `/predict`
+    - **Swagger UI for interactive docs:** `localhost:8000/docs`  
+    - **Health check endpoint:** `/health`  
+    - **Prediction requests:** `/predict`
 
 ## License  
 
