@@ -23,7 +23,7 @@ class PreProcessor:
         processed_dir (str): Directory where preprocessed datasets and corpus files are saved.
         stop_words (set): Set of stopwords used for token filtering.
         lemmatizer (WordNetLemmatizer): Lemmatization engine applied to tokens.
-        dictionary (corpora.Dictionary): Gensim dictionary built from training data.
+        dictionary (corpora.Dictionary): Dictionary built from training data.
 
     Methods:
         fit_transform(df: pd.DataFrame, dataset_name: str) -> None:
@@ -42,7 +42,7 @@ class PreProcessor:
             Saves the preprocessed DataFrame to disk as CSV.
 
         _build_dictionary(texts: pd.Series) -> None:
-            Constructs and saves a Gensim dictionary from tokenized training data.
+            Constructs and saves a dictionary from tokenized training data.
 
         _load_dictionary() -> None:
             Loads a previously saved dictionary from disk.

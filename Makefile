@@ -54,11 +54,11 @@ evaluate:
 
 # Step 6: Docker container build and deployment
 docker-build:
-	docker build -t topic-api .
-	@echo "[DOCKER BUILD] Container image 'topic-api' successfully built."
+	docker build -t topic-model-api .
+	@echo "[DOCKER BUILD] Container image 'topic-model-api' successfully built."
 
 docker-run:
-	docker run -p 8000:8000 topic-api
+	docker run --name topic-model-api -p 8000:8000 topic-model-api
 	@echo "[DOCKER RUN] Container launched. API available at http://localhost:8000."
 
 serve: docker-build docker-run

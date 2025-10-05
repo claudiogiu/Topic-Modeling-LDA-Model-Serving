@@ -25,7 +25,7 @@ class KaggleDataDownloader:
             Loads the dataset slug from environment and validates its presence.
 
         download() -> None:
-            Enforces credential presence and downloads the dataset into the raw data directory.
+            Enforces credential presence and downloads the dataset into the 'data/raw' directory.
 
         _get_raw_path() -> str:
             Resolves the absolute path to the 'data/raw' directory relative to the project root.

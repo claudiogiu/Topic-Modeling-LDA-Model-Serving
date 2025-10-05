@@ -12,7 +12,7 @@ warnings.filterwarnings("ignore")
 @dataclass
 class ModelEvaluator:
     """
-    Interface for evaluating a trained Gensim LDA model using fixed test corpus and training texts.
+    Interface for evaluating a trained LDA model using fixed test corpus and training texts.
 
     Attributes:
         dictionary_filename (str): Name of the dictionary file located in the model artifact directory.
@@ -22,7 +22,7 @@ class ModelEvaluator:
         corpus_filename (str): Name of the test corpus file in JSON format.
         texts_filename (str): Name of the training CSV file containing tokenized texts.
 
-        dictionary (corpora.Dictionary): Loaded Gensim dictionary object used for inference.
+        dictionary (corpora.Dictionary): Loaded dictionary object used for inference.
         corpus (list): List of test documents in BoW format.
         lda_model (LdaModel): Loaded LDA model instance used for evaluation.
 
@@ -31,13 +31,13 @@ class ModelEvaluator:
             Loads dictionary, corpus, model and tokenized documents, computes coherence and perplexity, and returns evaluation metrics.
 
         _load_dictionary() -> None:
-            Loads a previously saved Gensim dictionary from disk.
+            Loads a previously saved dictionary from disk.
 
         _load_corpus() -> None:
             Loads the fixed test corpus from disk in JSON format.
 
         _load_model() -> None:
-            Loads a trained LDA model from disk in Gensim format.
+            Loads a trained LDA model from disk.
 
         _load_texts() -> list[list[str]]:
             Loads the training CSV and extracts the 'texts' column as a list of tokenized documents.

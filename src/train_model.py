@@ -11,7 +11,7 @@ warnings.filterwarnings("ignore")
 @dataclass
 class ModelTrainer:
     """
-    Interface for training a Gensim LDA model using preprocessed corpus and dictionary artifacts.
+    Interface for training a LDA model using preprocessed corpus and dictionary artifacts.
 
     Attributes:
         corpus_filename (str): Name of the corpus file located in the processed data directory.
@@ -29,13 +29,13 @@ class ModelTrainer:
             Loads dictionary and corpus, trains the LDA model, and saves it to disk.
 
         _load_dictionary() -> None:
-            Loads a previously saved Gensim dictionary from disk.
+            Loads a previously saved dictionary from disk.
 
         _load_corpus() -> None:
             Loads a preprocessed corpus from disk in JSON format.
 
         _save_model() -> None:
-            Persists the trained LDA model to disk in Gensim format.
+            Persists the trained LDA model to disk.
     """
 
     corpus_filename: str = "train_corpus.json"

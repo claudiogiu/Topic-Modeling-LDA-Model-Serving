@@ -67,7 +67,6 @@ def preprocess_text(text: str) -> list[str]:
 
 @app.post("/predict", response_model=TopicDistribution, status_code=status.HTTP_200_OK)
 async def predict(input: AbstractInput):
-    """Infers topic distribution from a scientific abstract using a pre-trained LDA model."""
     try:
         tokens = preprocess_text(input.abstract)
         if not tokens:
@@ -91,7 +90,6 @@ async def predict(input: AbstractInput):
 
 @app.get("/health", tags=["Utility"])
 async def service_health():
-    """Verifies service availability."""
     return {"status": "OK"}
 
 
