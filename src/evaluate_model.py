@@ -28,7 +28,7 @@ class ModelEvaluator:
 
     Methods:
         evaluate() -> dict:
-            Loads dictionary, corpus, model and tokenized documents, computes coherence and perplexity, and returns evaluation metrics.
+            Loads dictionary, corpus, model and tokenized documents, computes coherence and per-word log perplexity, and returns evaluation metrics.
 
         _load_dictionary() -> None:
             Loads a previously saved dictionary from disk.
@@ -62,14 +62,14 @@ class ModelEvaluator:
 
         coherence_model = CoherenceModel(model=self.lda_model, texts=texts, dictionary=self.dictionary, coherence="c_v")
         coherence = coherence_model.get_coherence()
-        perplexity = self.lda_model.log_perplexity(self.corpus)
+        log_perplexity = self.lda_model.log_perplexity(self.corpus)
 
         print(f"C_V Coherence Score on training texts: {coherence:.4f}")
-        print(f"Perplexity on test corpus: {perplexity:.4f}")
+        print(f"Log Perplexity on test corpus: {log_perplexity:.4f}")
 
         return {
             "coherence": coherence,
-            "perplexity": perplexity,
+            "perplexity": log_perplexity,
         }
 
     def _load_dictionary(self) -> None:
