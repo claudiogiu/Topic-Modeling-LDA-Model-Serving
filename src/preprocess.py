@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 import os
-import re
 import json
 import pandas as pd
 from gensim import corpora
@@ -83,7 +82,7 @@ class PreProcessor:
 
     def _pre_process(self, text: str) -> list[str]:
         tokens = simple_preprocess(text, deacc=True, min_len=3)
-        return [self.lemmatizer.lemmatize(re.sub(r"[^A-Za-z]+", " ", token)) for token in tokens if token not in self.stop_words]
+        return [self.lemmatizer.lemmatize(token) for token in tokens if token not in self.stop_words]
 
     def _save_preprocessed(self, df: pd.DataFrame, dataset_name: str) -> None:
         filename = self._basename(dataset_name) + ".csv"

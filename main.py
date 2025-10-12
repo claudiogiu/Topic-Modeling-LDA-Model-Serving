@@ -7,7 +7,7 @@ from nltk.corpus import stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
 from gensim.utils import simple_preprocess
 import uvicorn
-import re, logging, warnings
+import logging, warnings
 
 warnings.filterwarnings("ignore")
 
@@ -60,7 +60,7 @@ def preprocess_text(text: str) -> list[str]:
     lemmatizer = WordNetLemmatizer()
     tokens = simple_preprocess(text, deacc=True, min_len=3)
     return [
-        lemmatizer.lemmatize(re.sub(r"[^A-Za-z]+", " ", token))
+        lemmatizer.lemmatize(token)
         for token in tokens if token not in stop_words
     ]
 
@@ -85,7 +85,7 @@ async def predict(input: AbstractInput):
     
     except Exception as e:
         logging.error(f"Topic inference failed: {e}")
-        raise HTTPException(status_code=500, detail="Internal error during topic inference. Please contact system administrator.")
+        raise HTTPException(status_code=500, detail="Internal error during topic inference.")
 
 
 @app.get("/health", tags=["Utility"])

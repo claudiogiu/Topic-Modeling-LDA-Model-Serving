@@ -69,7 +69,7 @@ class ModelEvaluator:
 
         return {
             "coherence": coherence,
-            "perplexity": log_perplexity,
+            "log_perplexity": log_perplexity,
         }
 
     def _load_dictionary(self) -> None:
